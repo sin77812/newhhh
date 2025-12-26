@@ -1,0 +1,626 @@
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gold: #C9A962;
+    --gold-light: #E8D5A3;
+    --gold-dark: #A68B4B;
+    --black: #0A0A0A;
+    --black-soft: #121212;
+    --black-card: #1A1A1A;
+    --white: #FFFFFF;
+    --white-soft: rgba(255, 255, 255, 0.85);
+    --white-muted: rgba(255, 255, 255, 0.5);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    background-color: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+}
+
+/* ===== Page Layout ===== */
+.page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    background-color: var(--black);
+    z-index: 1;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#main.active {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* ===== Landing Page ===== */
+#landing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201, 169, 98, 0.03) 0%, transparent 70%);
+}
+
+.landing-content {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 700;
+    letter-spacing: 1.5rem;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+}
+
+.subtitle {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 4rem;
+}
+
+/* ===== Code Input ===== */
+.code-input-container {
+    position: relative;
+    width: 320px;
+    max-width: 90vw;
+    margin: 0 auto 2rem;
+}
+
+.code-input {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    font-family: "PT Mono", monospace;
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.3rem;
+    text-align: center;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid var(--gold-dark);
+    outline: none;
+    transition: all 0.4s ease;
+}
+
+.code-input::placeholder {
+    color: var(--white-muted);
+    letter-spacing: 0.2rem;
+}
+
+.code-input:focus {
+    border-color: var(--gold);
+    box-shadow: 
+        0 0 0 1px var(--gold),
+        inset 0 0 30px rgba(201, 169, 98, 0.05);
+}
+
+.input-border {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 1px solid var(--gold-dark);
+    opacity: 0.3;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.code-input:focus ~ .input-border {
+    opacity: 0.6;
+}
+
+.hint {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--white-muted);
+    letter-spacing: 0.1rem;
+}
+
+/* ===== VIP Transition ===== */
+#transition {
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vip-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vip-svg {
+    width: 400px;
+    max-width: 80vw;
+}
+
+.vip-text {
+    font-family: "Oswald", sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+}
+
+.vip-text.animate {
+    animation: drawVIP 2s ease forwards;
+}
+
+@keyframes drawVIP {
+    0% {
+        stroke-dashoffset: 500;
+        fill: transparent;
+    }
+    70% {
+        stroke-dashoffset: 0;
+        fill: transparent;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        fill: var(--gold);
+    }
+}
+
+/* ===== Hero Section ===== */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.1) 40%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 15%;
+    left: 8%;
+    z-index: 2;
+}
+
+.hero-welcome {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.3rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.hero-title {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.1rem;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.scroll-indicator span {
+    display: block;
+    width: 24px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    position: relative;
+}
+
+.scroll-indicator span::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: var(--white);
+    border-radius: 2px;
+    animation: scrollBounce 2s infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50% { transform: translateX(-50%) translateY(10px); opacity: 0.3; }
+}
+
+/* ===== Benefits Section ===== */
+.benefits-section {
+    background: var(--black);
+    padding: 6rem 2rem;
+    min-height: 100vh;
+}
+
+.benefits-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-label {
+    font-family: "Oswald", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 0.4rem;
+    margin-bottom: 0.75rem;
+}
+
+.section-title {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.gold-line {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto 5rem;
+}
+
+.benefit-box {
+    background: var(--black-card);
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    padding: 2rem;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.benefit-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--gold);
+    transition: height 0.4s ease;
+}
+
+.benefit-box:hover {
+    border-color: rgba(201, 169, 98, 0.4);
+    transform: translateY(-4px);
+}
+
+.benefit-box:hover::before {
+    height: 100%;
+}
+
+.benefit-num {
+    font-family: "Oswald", sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.benefit-box h4 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+}
+
+.benefit-box p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--white-soft);
+    line-height: 1.6;
+}
+
+/* ===== Coupon Section ===== */
+.coupon-section {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.coupon-card {
+    position: relative;
+    text-align: center;
+    padding: 3rem 4rem;
+    border: 1px solid var(--gold);
+    background: linear-gradient(135deg, rgba(201, 169, 98, 0.05), transparent);
+    overflow: hidden;
+    width: 100%;
+}
+
+.coupon-badge {
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.coupon-label {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 0.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.coupon-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--black);
+    background: var(--gold);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.coupon-button .btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.coupon-button:hover {
+    background: var(--gold-light);
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(201, 169, 98, 0.4);
+}
+
+.coupon-button:hover .btn-icon {
+    transform: translateX(5px);
+}
+
+.coupon-button:active {
+    transform: scale(0.98);
+}
+
+.coupon-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(201, 169, 98, 0.1) 0%, transparent 60%);
+    animation: glowPulse 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* ===== Modal ===== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 1000;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    text-align: center;
+    padding: 3rem 4rem;
+    border: 1px solid var(--gold-dark);
+    background: var(--black-soft);
+    max-width: 90vw;
+    animation: modalPop 0.4s ease;
+}
+
+@keyframes modalPop {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-check {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin: 0 auto 1.5rem;
+    animation: checkPop 0.5s ease 0.2s both;
+}
+
+@keyframes checkPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.modal-content h3 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+}
+
+.modal-content p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    color: var(--white-soft);
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.modal-close {
+    padding: 0.75rem 2.5rem;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--gold-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.1rem;
+}
+
+.modal-close:hover {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .hero-content {
+        left: 6%;
+        bottom: 20%;
+    }
+    
+    .benefits-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .benefit-box {
+        padding: 1.5rem;
+    }
+    
+    .coupon-card {
+        padding: 2rem;
+    }
+    
+    .coupon-section {
+        margin: 0 1.5rem;
+    }
+    
+    .coupon-label {
+        font-size: 1.2rem;
+        letter-spacing: 0.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        letter-spacing: 0.8rem;
+    }
+    
+    .subtitle {
+        letter-spacing: 0.5rem;
+    }
+    
+    .hero-welcome {
+        letter-spacing: 0.15rem;
+    }
+    
+    .hero-title {
+        letter-spacing: 0.05rem;
+    }
+}

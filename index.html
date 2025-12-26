@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>송정 랜드마크 VIP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100..900&family=Oswald:wght@200..700&family=PT+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 랜딩 페이지 - 초대코드 입력 -->
+    <section id="landing" class="page active">
+        <div class="landing-overlay"></div>
+        <div class="landing-content">
+            <h1 class="title">PRIVATE</h1>
+            <p class="subtitle">FOR VIP</p>
+            <div class="code-input-container">
+                <input 
+                    type="text" 
+                    id="inviteCode" 
+                    class="code-input" 
+                    placeholder="초대코드 입력"
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <div class="input-border"></div>
+            </div>
+            <p class="hint">Enter를 눌러 입장하세요</p>
+        </div>
+    </section>
+
+    <!-- VIP 트랜지션 -->
+    <section id="transition" class="page">
+        <div class="vip-animation">
+            <svg viewBox="0 0 300 100" class="vip-svg">
+                <text x="50%" y="70" text-anchor="middle" class="vip-text">VIP</text>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 메인 페이지 - 히어로 + 혜택 -->
+    <section id="main" class="page">
+        <!-- 히어로 섹션 -->
+        <div class="hero-section">
+            <img src="public/heroo.png" alt="송정 랜드마크" class="hero-image">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <p class="hero-welcome">환영합니다.</p>
+                <h2 class="hero-title">송정 랜드마크 VIP</h2>
+            </div>
+            <div class="scroll-indicator">
+                <span></span>
+            </div>
+        </div>
+
+        <!-- 혜택 섹션 -->
+        <div class="benefits-section">
+            <div class="benefits-header">
+                <p class="section-label">EXCLUSIVE BENEFITS</p>
+                <h3 class="section-title">VIP 전용 혜택</h3>
+                <div class="gold-line"></div>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-box">
+                    <span class="benefit-num">01</span>
+                    <h4>우선 분양권</h4>
+                    <p>일반 분양 대비 최우선 순위로<br>원하시는 호실을 선점</p>
+                </div>
+
+                <div class="benefit-box">
+                    <span class="benefit-num">02</span>
+                    <h4>특별 할인가</h4>
+                    <p>VIP 전용 특별가 적용<br>최대 5% 추가 할인</p>
+                </div>
+
+                <div class="benefit-box">
+                    <span class="benefit-num">03</span>
+                    <h4>프리미엄 패키지</h4>
+                    <p>고급 마감재 및 프리미엄<br>가전 패키지 무상 제공</p>
+                </div>
+
+                <div class="benefit-box">
+                    <span class="benefit-num">04</span>
+                    <h4>컨시어지 서비스</h4>
+                    <p>입주 전 과정 1:1<br>전담 매니저 배정</p>
+                </div>
+
+                <div class="benefit-box">
+                    <span class="benefit-num">05</span>
+                    <h4>상품권 증정</h4>
+                    <p>계약 완료 시<br>신세계 상품권 100만원</p>
+                </div>
+
+                <div class="benefit-box">
+                    <span class="benefit-num">06</span>
+                    <h4>주차 혜택</h4>
+                    <p>세대당 2대<br>주차 공간 우선 배정</p>
+                </div>
+            </div>
+
+            <!-- 쿠폰 수령 섹션 -->
+            <div class="coupon-section">
+                <div class="coupon-card">
+                    <div class="coupon-badge">✦</div>
+                    <p class="coupon-label">FOR VIP COUPON</p>
+                    <button id="claimBtn" class="coupon-button">
+                        <span class="btn-text">수령하기</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                    <div class="coupon-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 상품권 수령 완료 모달 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-check">✓</div>
+            <h3>신청이 완료되었습니다</h3>
+            <p>담당자가 곧 연락드리겠습니다.</p>
+            <button id="closeModal" class="modal-close">확인</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
